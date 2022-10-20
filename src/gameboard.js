@@ -2,6 +2,7 @@ import Ship from './ship.js';
 
 export default function Gameboard() {
   const board = [];
+  const missHits = [];
 
   function createBoard() {
     const rows = 10;
@@ -18,12 +19,29 @@ export default function Gameboard() {
   function placeShip(x, y) {
     for (let i = 0; i < board.length; i++) {
       if (board[i] === (`${x},${y}`)) {
-        const newShip = Ship(3);
+        const newShip = Ship();
         board[i] = newShip;
         return board;
       }
     }
+    return board; // shipCoord.push(`${x},${y}`);
   }
 
-  return { createBoard, placeShip };
+  function receiveAttack(x, y) {
+    for (let i = 0; i < board.length; i++) {
+      if (board[i] === (`${x},${y - 1}`)) {
+        i += 1;
+        const obj = board[i];
+        if (typeof obj === 'object') {
+          const newShip = Ship();
+          board[i] = newShip.hit();
+          return board;
+        }
+        return missHits.push(`${x},${y}`);
+      }
+    }
+    return board;
+  }
+
+  return { createBoard, placeShip, receiveAttack };
 }

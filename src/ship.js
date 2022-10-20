@@ -1,5 +1,5 @@
-export default function Ship(shipLength) {
-  const length = shipLength;
+export default function Ship() {
+  const length = 0;
   let numOfHits = 0;
   let sunk = false;
 
@@ -16,5 +16,7 @@ export default function Ship(shipLength) {
     sunk = false;
     return sunk;
   }
-  return { length, numOfHits, sunk, hit, isSunk };
+  return {
+    length, numOfHits, sunk, hit, isSunk,
+  };
 }
