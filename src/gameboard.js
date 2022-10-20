@@ -24,7 +24,7 @@ export default function Gameboard() {
         return board;
       }
     }
-    return board; // shipCoord.push(`${x},${y}`);
+    return board;
   }
 
   function receiveAttack(x, y) {
