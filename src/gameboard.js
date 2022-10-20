@@ -43,5 +43,9 @@ export default function Gameboard() {
     return board;
   }
 
-  return { createBoard, placeShip, receiveAttack };
+  function sunkShips() {
+    return board.some((value) => (typeof value === 'object'));
+  }
+
+  return { createBoard, placeShip, receiveAttack, sunkShips };
 }
