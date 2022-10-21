@@ -1,1 +1,4 @@
-import './style.css'
+import './style.css';
+import UI from './ui.js';
+
+UI();
