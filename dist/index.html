@@ -10,18 +10,34 @@
 <body>  
     <div class="container">
         <h1>B A T T L E S H I P</h1>
-        <form>
-            <div class="player">
-                <label for="name" id="name">ENTER PLAYER NAME:</label>
-                <input type="text" id="name">
+            <form>
+                <div class="player">
+                    <label for="name" id="name">ENTER PLAYER NAME:</label>
+                    <input type="text" id="name" class="name" required>
+                </div>
+                <div class="button">
+                    <button id="submit" type="submit">Start Game</button>
+                </div>
+            </form>
+            <div class="game-turns"></div>
+        <div class="content-container">
+            <div class="boards">
+                <div class="board-one">
+                    <div class="board-div-one" id="board"></div>
+                    <span class="boardh">Your board</span>  
+                </div>
+                <div class="board-two">
+                    <div class="board-div-two" id="board"></div>
+                    <span class="boardc">PC's board</span>
+                </div>
             </div>
-            <div class="button">
-                <button id="submit" type="submit">Start Game</button>
+            <div class="ships-container">
+                <div class="carrier" id="item" draggable="true"></div>
+                <div class="battleship" id="item" draggable="true"></div>
+                <div class="cruiser" id="item" draggable="true"></div>
+                <div class="submarine" id="item" draggable="true"></div>
+                <div class="destroyer" id="item" draggable="true"></div>
             </div>
-        </form>
-        <div class="boards">
-            <div class="board-div-one" id="board"></div>
-            <div class="board-div-two" id="board"></div>
         </div>
     </div>
 </body>

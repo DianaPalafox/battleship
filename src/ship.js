@@ -1,5 +1,5 @@
 export default function Ship() {
-  const length = 0;
+  const length = 1;
   let numOfHits = 0;
   let sunk = false;
 
