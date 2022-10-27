@@ -1,17 +1,55 @@
-import Gameboard from './gameboard';
+// import Gameboard from './gameboard';
 
 export default function Player() {
-  function humanTurn(x, y) {
-    const humanPlayer = Gameboard();
-    humanPlayer.receiveAttack(x, y);
+  // const humanPlayer = Gameboard();
+  // const computerPlayer = Gameboard();
+  // const msg = document.querySelector('.game-turns');
+  const msgContainer = document.querySelector('.msg-container');
+
+  function msgPlayerTurn() {
+    const msgContent = Message(document.querySelector('.name').value);
+    msgContainer.textContent = msgContent.toSignalPlayersTurn();
   }
 
-  function computerTurn() {
-    const computerPlayer = Gameboard();
-    const x = Math.floor((Math.random() * (9 - 0 + 1)));
-    const y = Math.floor((Math.random() * (9 - 0 + 1)));
-    computerPlayer.receiveAttack(x, y);
+  function msgComputerTurn() {
+    const msgContent = Message(document.querySelector('.name').value);
+    msgContainer.textContent = msgContent.toSignalComputersTurn();
   }
 
-  return { humanTurn, computerTurn };
+  function msgPlaceShips() {
+    const msgContent = Message(document.querySelector('.name').value);
+    msgContainer.textContent = msgContent.toPlaceShips();
+  }
+
+  function deleteMsg() {
+      msgContainer.style.display = 'none';
+  }
+
+  /* function attack() {
+    const cells = document.querySelectorAll('.cellC');
+    cells.forEach((cell) => {
+      cell.addEventListener('click', (e) => {
+        const a = e.target.dataset.index;
+        const b = e.target.id;
+        console.log(a, b);
+        humanTurn(a, b);
+      });
+    });
+  } */
+
+  return {
+    // humanTurn,
+    // computerTurn,
+    msgPlayerTurn,
+    msgComputerTurn,
+    msgPlaceShips,
+    deleteMsg,
+  };
 }
+
+const Message = (name) => {
+  const toPlaceShips = () => 'Place your ships Captain ' + `${name}`;
+  const toSignalPlayersTurn = () => 'Your turn Captain ' + `${name}`;
+  const toSignalComputersTurn = () => 'Your enemies turn, Captain ' + `${name}`;
+  return { toPlaceShips, toSignalPlayersTurn, toSignalComputersTurn };
+};

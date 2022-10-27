@@ -65,12 +65,13 @@ button{
     margin-top: 50px;
 }
 
-.cell {
+.cellC, .cellH {
     background: rgb(75, 75, 0);
     aspect-ratio:1/1;
     border: 1px solid white;
     width: 40px;
     height: 40px;
+    color: white;
 }
 
 .boardh, .boardc{

@@ -1,8 +1,7 @@
-import Ship from './ship.js';
+import Ship from './ship';
 
 export default function Gameboard() {
   const board = [];
-  const missHits = [];
 
   function createBoard() {
     const rows = 10;
@@ -29,18 +28,22 @@ export default function Gameboard() {
 
   function receiveAttack(x, y) {
     for (let i = 0; i < board.length; i++) {
+      if (board[i] === (`${x},${y}`)) {
+        board[i] = 'hit';
+        console.log(board);
+        return board;
+      }
       if (board[i] === (`${x},${y - 1}`)) {
         i += 1;
         const obj = board[i];
         if (typeof obj === 'object') {
           const newShip = Ship();
           board[i] = newShip.hit();
+          console.log(board);
           return board;
         }
-        return missHits.push(`${x},${y}`);
       }
     }
-    return board;
   }
 
   function sunkShips() {
@@ -48,6 +51,6 @@ export default function Gameboard() {
   }
 
   return {
-    createBoard, placeShip, receiveAttack, sunkShips,
+    createBoard, placeShip, receiveAttack, sunkShips, board,
   };
 }
