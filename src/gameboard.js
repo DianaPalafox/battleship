@@ -18,10 +18,21 @@ export default function Gameboard() {
   function placeShip(x, y) {
     for (let i = 0; i < board.length; i++) {
       if (board[i] === (`${x},${y}`)) {
-        const newShip = Ship();
+        const newShip = Ship(`${x},${y}`);
         board[i] = newShip;
         return board;
       }
+    }
+    return board;
+  }
+
+  function receiveAttackObject(x, y) {
+    if (board.some((e) => e.coordinates === (`${x},${y}`))) {
+      const newShip = Ship();
+      const i = `${x}${y}`;
+      board[i] = newShip.hit();
+      console.log(board);
+      return board;
     }
     return board;
   }
@@ -33,17 +44,9 @@ export default function Gameboard() {
         console.log(board);
         return board;
       }
-      if (board[i] === (`${x},${y - 1}`)) {
-        i += 1;
-        const obj = board[i];
-        if (typeof obj === 'object') {
-          const newShip = Ship();
-          board[i] = newShip.hit();
-          console.log(board);
-          return board;
-        }
-      }
     }
+    receiveAttackObject(x, y);
+    return board;
   }
 
   function sunkShips() {

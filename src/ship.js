@@ -1,4 +1,5 @@
-export default function Ship() {
+export default function Ship(coord) {
+  const coordinates = coord;
   const length = 1;
   let numOfHits = 0;
   let sunk = false;
@@ -17,6 +18,6 @@ export default function Ship() {
     return sunk;
   }
   return {
-    length, numOfHits, sunk, hit, isSunk,
+    coordinates, length, numOfHits, sunk, hit, isSunk,
   };
 }
